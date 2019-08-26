@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello, World! - A-Frame</title>
+  <meta name="description" content="Hello, World! - A-Frame">
+  <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-randomize-component@^0.2.0/aframe-randomize-component.js"></script> 
+
+  <script>
+      AFRAME.registerComponent('earth', {
+        init: function () {
+          // Solution for Creating Entities.
+          var sceneEl = document.querySelector('a-scene'); 
+          
+          for (var i = 0; i < 50; i++) {
+            var boxEl = document.createElement('a-entity');
+            boxEl.setAttribute('material', {color: '#EF2D5E'});
+            boxEl.setAttribute('position', {x: Math.random() * 20 - 10, y: Math.random() * 20 - 10, z: Math.random() * 20 - 10});
+            boxEl.setAttribute('scale', {x: Math.random() / 2, y: Math.random() / 2, z: Math.random() / 2});
+            sceneEl.appendChild(boxEl);
+          }
+        }
+      });
+    </script>
+</head>
+<body>
+  <a-scene earth>
+<!-- <a-asset>
+      <a-asset-item id="object" src="models/WebVRModelTest000.obj"></a-asset-item>
+    </a-asset> -->
+
+    <a-asset>
+      <a-asset-item id="T" src="models/T3.obj"></a-asset-item>
+    </a-asset>
+
+    <a-asset>
+      <a-asset-item id="E" src="models/E.obj"></a-asset-item>
+    </a-asset>
+
+    <a-asset>
+        <a-asset-item id="S" src="models/S.obj"></a-asset-item>
+    </a-asset>
+
+    <a-assets>
+    <img id="my-texture" src="textures/brick.jpeg">
+    <img id="gold" src="textures/gold.jpg">
+     <img id="circuit3" src="textures/circuit3.jpg">
+  </a-assets>
+
+
+  
+<!--  Up -->
+<a-entity randomize="position:25 25 25..-25 -25 -25; scale:0.1 0.1 0.1.. 1.2 1.2 1.2 " animation="property:position; to: 0 200 0; loop: true; dur: 15000" 
+animation__mouseenter="property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter"
+  animation__mouseleave="property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave"> 
+  <a-entity src="#gold" animation="property: rotation; to: 0 0 720; loop: NaN; dur: 50000" material="color: #b89f36; normalMap: textures/gold.jpg" geometry="primitive: icosahedron; radius: 5" rotation="330.17468849170143 330.175044181235 287.7307993512178" scale="0.3 0.3 0.3"></a-entity>
+  </a-entity>
+
+<a-entity randomize="position:25 25 25..-25 -25 -25; " animation="property:position; to: 0 200 0; loop: true; dur: 15000" 
+animation__mouseenter="property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter"
+  animation__mouseleave="property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave"> 
+  <a-entity src="#gold" animation="property: rotation; to: 0 0 720; loop: NaN; dur: 50000" material="color: #b89f36; normalMap: textures/gold.jpg" geometry="primitive: icosahedron; radius: 5" rotation="330.17468849170143 330.175044181235 287.7307993512178" scale="0.3 0.3 0.3"></a-entity>
+  </a-entity>
+
+  <a-entity randomize="position:25 25 25..-25 -25 -25;" animation="property:position; to: 0 200 0; loop: true; dur: 15000" 
+animation__mouseenter="property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter"
+  animation__mouseleave="property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave"> 
+  <a-entity src="#gold" animation="property: rotation; to: 0 0 720; loop: NaN; dur: 50000" material="color: #b89f36; normalMap: textures/gold.jpg" geometry="primitive: icosahedron; radius: 5" rotation="330.17468849170143 330.175044181235 287.7307993512178" scale="0.3 0.3 0.3"></a-entity>
+  </a-entity>
+  
+<!-- down -->
+  <a-entity randomize="position:25 200 25..-25 200 -25" animation="property:position; to: 0 0 0; loop: true; dur: 15000" 
+animation__mouseenter="property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter"
+  animation__mouseleave="property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave"> 
+  <a-entity src="#gold" animation="property: rotation; to: 0 0 720; loop: NaN; dur: 50000" material="color: #b89f36; normalMap: textures/gold.jpg" geometry="primitive: icosahedron; radius: 5" rotation="330.17468849170143 330.175044181235 287.7307993512178" scale="0.3 0.3 0.3"></a-entity>
+  </a-entity>
+
+
+
+
+
+      
+
+     <a-plane position="1.03624 110 -4.55" rotation="90 90" scale="" width="1" height="1" color="#cccccc" material="src: #circuit3; repeat: 2 2; side: double" geometry="width: 20; height: 20"></a-plane>
+    
+      
+        <a-entity environment="preset: goldmine; dressingAmount: 0; groundColor:#ffffff; groundColor2:#ffffff; skyType:gradient; fog:0 "></a-entity>
+
+        <a-sky>
+      </a-sky>
+
+      <a-camera>
+    <a-cursor></a-cursor>
+  </a-camera>
+
+
+  <script>
+  var boxEl = document.querySelector('a-entity');
+  boxEl.addEventListener('mouseenter', function () {
+    boxEl.setAttribute('scale', {x: 2, y: 2, z: 2});
+    boxEl.setAttribute('color', "red");
+  });
+</script>
+
+
+    </a-scene>
+
+  </body>
+  </html>
